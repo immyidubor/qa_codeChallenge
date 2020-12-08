@@ -24,4 +24,55 @@ let dataset = [
   { x: 81, y: 227, method: "divide" },
 ];
 
-describe("Calculator", () => {});
+/* dataset.forEach((object) => {
+  switch(object.method) {
+    case "add": 
+      console.log(calculator.add(object.x, object.y));
+      break;
+    case "subtract":
+      console.log(calculator.subtract(object.x, object.y));
+      break;
+    case "multiply":
+      console.log(calculator.multiply(object.x, object.y));
+      break;
+    case "divide":
+      console.log(calculator.divide(object.x, object.y));
+      break;
+    default:
+      console.log("The calculator method does not exist");
+  }
+
+}); */
+
+describe("Calculator", () => {
+  dataset.forEach((object) => {
+    switch(object.method) {
+      case "add": 
+        test(`should add x & y`, () => {
+          let result = calculator.add(object.x, object.y);
+          expect(result).toBe(object.x + object.y);
+        });
+        break;
+      case "subtract":
+        test(`should subtract x & y`, () => {
+          let result = calculator.subtract(object.x, object.y);
+          expect(result).toBe(object.x - object.y);
+        });
+        break;
+      case "multiply":
+        test(`should multiply x & y`, () => {
+          let result = calculator.multiply(object.x, object.y);
+          expect(result).toBe(object.x * object.y);
+        });
+        break;
+      case "divide":
+        test(`should divide x & y`, () => {
+          let result = calculator.divide(object.x, object.y);
+          expect(result).toBe(object.x / object.y);
+        });
+        break;
+      default:
+        console.log("The calculator method does not exist");
+    }
+  });
+});
